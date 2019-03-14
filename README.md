@@ -17,9 +17,9 @@ The restaurant guest:
 - may reserve the selected table for the selected date/time.
 
 Restaurant owner:
-- may automize the table reservation system.
+- may automize the table reservation system. The app takes care of reservation details whether the date is in the future, the restaurant is open during the selected hours etc.
 - may receive messages for general questions/ wishes from the restaurant guest.
-- may update the restaurant by using the admin page.
+- may update the restaurant info by using the admin page.
 
 
 Recommendations for the upcoming versions:
