@@ -1,0 +1,14 @@
+<h4> The summary of your reservation:</h4>
+
+{% if result %}
+<h5> Your reservation is saved successfully!</h5>
+{% else %}
+<h5> We are not available for that time/table. Pls make your selection for another time or table</h5>
+{% endif %}
+
+<div>
+    <font size="2">
+        <p> please make your table selection!  </p>
+        <p> <a href="/reservation/"> Continue to make reservation </a> </p>
+        </font>
+</div>

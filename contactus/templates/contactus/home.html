@@ -1,0 +1,16 @@
+<h4> Contact Information </h4>
+
+{%for branch in all_branches %}
+<div>
+<h4> {{branch.branch_name}}</h4>
+    <font size="2">
+        <p> Phone Number : {{branch.branch_phone_number}} </p>
+        <p> Address: {{branch.branch_address}},{{branch.branch_city}} </p>
+        <p> E-mail: {{branch.branch_email}} </p>
+        </font>
+</div>
+{% endfor %}
+
+
+
+
