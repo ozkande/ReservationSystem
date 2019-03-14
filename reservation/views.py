@@ -42,7 +42,6 @@ def datetimecheckpage(request):
 
 
 
-# Create your views here.
 def home(request):
     if request.method == 'POST':
         result = False
