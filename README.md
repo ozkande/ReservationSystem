@@ -27,4 +27,3 @@ Recommendations for the upcoming versions:
 This will guide the restaurant guests for making optimum selections. 
 If the restaurant has sea-view/scenery tables, easy to access tables, those should be marked carefully.
 
-
