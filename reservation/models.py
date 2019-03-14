@@ -84,36 +84,6 @@ class Reservation(models.Model):
                 return True
 
 
-           # if reservation_start == r.reservation_start:
-
-
-'''
-     table_list = []
-
-            for t in Table.objects.all():
-                table_list.append(t)
-            for r in Reservation.objects.all():
-                if reservation_start == r.reservation_start:
-                    if r.reservation_confirmed == True:
-                        table_list.remove(r.table)
-
-            for t in table_list:
-                print(t)
-
-'''
-
-  #  def __str__(self):
-   #     return self.customer_name +  " " + str(self.reservation_start)
-
-
-class ReservationDatabase(models.Model):
-    reservation_datetime = models.DateTimeField()
-    table = models.ForeignKey(Table, on_delete=models.CASCADE, null= True)
-    customer = models.ForeignKey(Reservation, on_delete= models.CASCADE, null= True)
-
-    def check_the_reservations(self, reservation_start):
-        r = ReservationDatabase.objects.all()
-        print(r)
 
 
 
@@ -127,58 +97,11 @@ class ReservationDatabase(models.Model):
 
 
 
-'''
-        def create_reservation_json(self,name,email, reservation_start, reservation_end):
-
-            return {
-            'name' : name,
-            'email': email,
-            'reservation_start': reservation_start,
-            'reservation_end' : reservation_end
-        }
 
 
-    #reservation list should be an json field in the end, organize accordingly.
-
-    def check_available_tables(self, reservation_start):
-        for t in Table.objects.all():
-            if reservation_start in t.table_reservation_list:
-                print('Reservation is not posible for table:', t)
-            else:
-                print('Reservation is possible for table: ', t)
-
-#check the party size
 
 
-'''
 
-'''
-
-
-    def reservation_analyse(self, form):
-        customer_name = form.data['customer_name']
-        reservation_start = form.data['reservation_start']
-        reservation_format = datetime.datetime.strptime(reservation_start, "%Y-%m-%d %H:%M:%S")
-        reservation_hour = reservation_format.strftime("%H")
-        reservation_day = reservation_format.strftime('%w')
-        print(reservation_day)
-        print(reservation_hour)
-
-
-                for t in Table.objects.all():
-                    if reservation_start in t.table_reservation_list:
-                        print('Reservation is not posible')
-                        print(t.table_reservation_list)
-
-                    else:
-                        print("Reservation succeeded.")
-                        t.table_reservation_list.append(reservation_start)
-                        break
-                        
-'''
-
-   # def new_reservation(self, reservation_start, customer_name):
-    #    return reservation_start
 
 
 
