@@ -27,4 +27,4 @@ Recommendations for the upcoming versions:
 - As the current version provides table selection, a graphical ilustration of the restaurant should be added.
 This will guide the restaurant guests for making optimum selections. 
 If the restaurant has sea-view/scenery tables, easy to access tables, those should be marked carefully.
-
+- Error situations caused by end-user entry is not considered widely. We plan to handle those in the upcoming versions. 
