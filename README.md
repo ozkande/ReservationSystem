@@ -20,7 +20,7 @@ Restaurant owner:
 - may automize the table reservation system.
 - may receive messages for general questions/ wishes from the restaurant guest.
 - may update the restaurant by using the admin page.
-- 
+
 
 Recommendations for the upcoming versions:
 - Front-end part is considered minimally, next versions may develop the front-end by using HTML/CSS/JS or similar.
