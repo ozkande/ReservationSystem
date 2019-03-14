@@ -20,7 +20,7 @@ class Reservation(models.Model):
     reservation_end = models.DateTimeField()
     reservation_confirmed = models.BooleanField(default = False)
     table = models.ForeignKey(Table, on_delete=models.CASCADE, null=True)
-    reservation_list = []
+  
 
 
     def reservation_date_past_or_future(self, reservation_start):
