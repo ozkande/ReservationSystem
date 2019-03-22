@@ -52,15 +52,16 @@ class Reservation(models.Model):
             return False
 
 
-    def check_available_tables(self, reservation_start):
+    def check_available_tables(self, reservation_start, reservation_end):
         table_list = []
 
         for t in Table.objects.all():
             table_list.append(t)
+
         for r in Reservation.objects.all():
-            if reservation_start == r.reservation_start:
+            if Reservation.objects.all().count():
                 reservation_start1 = (str(reservation_start) + '+00:00')
-                if str(r.reservation_start) <= reservation_start1 <= str(r.reservation_end):
+                if str(r.reservation_start) <= reservation_start1 <= str(r.reservation_end) and (str(r.reservation_start) <= str(reservation_end) <= str(r.reservation_end)):
                     if r.reservation_confirmed == True:
                         table_list.remove(r.table)
 
@@ -69,19 +70,23 @@ class Reservation(models.Model):
 
 
 
-    def different_way_check_available_tables(self, reservation_start, table):
+    def different_way_check_available_tables(self, reservation_start, reservation_end, table):
         reservation_start1 = (str(reservation_start) + '+00:00')
         for r in Reservation.objects.filter(table=table):
-            if str(r.reservation_start) <= str(reservation_start) <= str(r.reservation_end):
-                print('reservation start' , r.reservation_start)
-                print('you wanna reserve', reservation_start)
-                print('reservation end' , r.reservation_end)
-                if r.reservation_confirmed:
-                    print('we are booked for that table')
-                    return False
+            count = Reservation.objects.filter(table=table).count()
+            print(count)
+            if count > 1:
+                if (str(r.reservation_start) <= str(reservation_start) <= str(r.reservation_end)) and (str(r.reservation_start) <= str(reservation_end) <= str(r.reservation_end)):
+                    if r.reservation_confirmed:
+                        print('Reservation failed for ' + str(reservation_start) + ' ' + str(table))
+                        return False
+                    else:
+                        print('Reservation succeeded')
+                    return True
             else:
-                print('Reservation succeeded for ' + str(reservation_start) + ' ' + str(table))
+                print('reservation should be ok.')
                 return True
+
 
 
            # if reservation_start == r.reservation_start:
@@ -113,7 +118,7 @@ class ReservationDatabase(models.Model):
 
     def check_the_reservations(self, reservation_start):
         r = ReservationDatabase.objects.all()
-        print(r)
+       # print(r)
 
 
 
