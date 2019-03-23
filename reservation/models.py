@@ -72,11 +72,13 @@ class Reservation(models.Model):
 
     def different_way_check_available_tables(self, reservation_start, reservation_end, table):
         reservation_start1 = (str(reservation_start) + '+00:00')
+        print(reservation_start)
         for r in Reservation.objects.filter(table=table):
             count = Reservation.objects.filter(table=table).count()
             print(count)
             if count > 1:
                 if (str(r.reservation_start) <= str(reservation_start) <= str(r.reservation_end)) and (str(r.reservation_start) <= str(reservation_end) <= str(r.reservation_end)):
+                    print(r.reservation_start)
                     if r.reservation_confirmed:
                         print('Reservation failed for ' + str(reservation_start) + ' ' + str(table))
                         return False

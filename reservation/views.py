@@ -49,18 +49,20 @@ def home(request):
         form = ReservationForm(request.POST)
         if form.is_valid():
             form.save()
-            reservation_request = Reservation.objects.get(customer_name=form.data['customer_name'], reservation_start=form.data['reservation_start'] )
+            reservation_request = Reservation.objects.get(customer_name=form.data['customer_name'], reservation_start=form.data['reservation_start'], table = form.data['table'], reservation_end=form.data['reservation_end'])
             date_is_valid =reservation_request.reservation_date_past_or_future(reservation_request.reservation_start)
             if date_is_valid == True:
                 hours_valid = reservation_request.check_whether_restaurant_is_open(reservation_request.reservation_start)
                 if hours_valid == True:
-                    reservation_request.check_available_tables(reservation_request.reservation_start)
-                    result = reservation_request.different_way_check_available_tables(reservation_request.reservation_start, reservation_request.table)
+                    reservation_request.check_available_tables(reservation_request.reservation_start, reservation_request.reservation_end)
+                    result = reservation_request.different_way_check_available_tables(reservation_request.reservation_start, reservation_request.reservation_end, reservation_request.table)
                     if result == True:
                         reservation_request.reservation_confirmed = True
                         reservation_request.save()
 
                         print(reservation_request.customer_name)
+                    else:
+                        print('it could not make reservation')
 
         content = {
             'result': result
